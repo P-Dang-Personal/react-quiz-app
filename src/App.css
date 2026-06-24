@@ -23,9 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 550px;
   width: 550px;
-  border: 1px solid black;
 }
 div#root {
   display: flex;
@@ -35,4 +33,41 @@ div#root {
 .splash-container {
   display: flex;
   flex-direction: column;
+}
+button.answer-btn {
+    font-size: 12px;
+    padding: 4px 15px;
+    border-radius: 5px;
+    border: 2px solid #4D5B9E;
+    background-color: white;
+    color: #293264;
+    font-weight: 600;
+    cursor: pointer;
+}
+button.answer-btn:hover,button.selected {
+    background-color: #D6DBF5;
+    border: none;
+}
+
+.btn-container{
+    display: flex;
+    gap: 13px;
+}
+.seperator {
+    margin-top: 15px;
+    border-top: 1px solid #DBDEF0;
+}
+.check-btn {
+    border: none;
+    background-color: #4D5B9E;
+    color: #F5F7FB;
+    padding: 11px 22px;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+.check-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
