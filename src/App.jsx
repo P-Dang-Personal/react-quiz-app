@@ -12,8 +12,8 @@ function App() {
   return (
     <main className="quiz-container">
       {!gameStart?    <section className="splash-container">
-      <h1 className="heading">Quizzical</h1>
-      <p className="description">Some description if needed</p>
+      <h1 className="heading">Video Game Quiz Game!</h1>
+      <p className="description">Test your video game knowledge with this simple quiz game!</p>
       <button onClick={startGame} className="start-quiz-btn">Start quiz</button>
     </section>:<Quiz/>}
     </main>

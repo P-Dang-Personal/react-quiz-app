@@ -33,6 +33,7 @@ div#root {
 .splash-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .btn-container{
