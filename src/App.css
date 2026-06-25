@@ -61,7 +61,6 @@ div#root {
 .answers {
     display: flex;
     gap: 13px;
-    justify-content: space-between;
 }
 
 .answers input[type="radio"] {
@@ -70,7 +69,7 @@ div#root {
   width: 0;
 }
 
-.answers label {
+.answers .choice {
     font-size: .75em;
     padding: 4px 15px;
     border-radius: 5px;
@@ -94,4 +93,21 @@ div#root {
 .answers input[type="radio"]:checked + label {
     background-color: #D6DBF5;
     border: none;
+}
+.label.choice.game-over{
+  opacity: .5;
+}
+label.choice.wrong {
+    background-color: #F8BCBC;
+    
+}
+label.choice.correct {
+    background-color: #94D7A2;
+    opacity: 1;
+}
+
+.completed-msg{;
+  font-size: 12.8px;
+  font-weight: bold;
+  margin-right: 8px;
 }
