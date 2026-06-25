@@ -3,7 +3,8 @@ import { shuffleArray } from './utils';
 import { decode } from 'html-entities';
 export default function Quiz() {
     const [questions, setQuestions] = React.useState([])
-    
+    const [gameActive,setGameActive] = React.useState(true)
+    const [correctAnswers,setCorrectAnswers] = React.useState([])
     async function fetchQuestions() {
     try {
       const response = await fetch(
@@ -19,7 +20,7 @@ export default function Quiz() {
           id: index,
           question: question.question,
           correctAnswer: question.correct_answer,
-          answers: answers,
+          answers: answers
         };
       });
       setQuestions(processedQuestions)
@@ -29,18 +30,21 @@ export default function Quiz() {
   }
   React.useEffect(function(){fetchQuestions()},[questions])
   const questionsEl = questions.map((question)=>{
+    const questionFormatted = decode(question.question)
+    setCorrectAnswers(prev=>[...prev,question.correctAnswer])
     const answersEl = question.answers.map((answer)=>{
-        return <button>{answer}</button>
+        const answerFormatted = decode(answer)
+        return (<><input className='answer' value={answerFormatted} type="radio" name={questionFormatted} id={answerFormatted}/><label htmlFor={answerFormatted}>{answerFormatted}</label></>)
     })
     return <>
     <div>
-    <h2 className=''>{decode(question.question)}</h2>
-    {answersEl}
-    <hr/>
+    <h2 className=''>{questionFormatted}</h2>
+    <div className='answers'>{answersEl}</div>
+    <hr className="seperator"/>
     </div>
     </>
   })
-  ;
+  console.log(correctAnswers)
   return (<section className="question-container">
     {questionsEl}
     <div className="check-container"><button className="check-btn">Check Answers</button></div>
