@@ -5,6 +5,16 @@ export default function Quiz() {
     const [questions, setQuestions] = React.useState([])
     const [gameActive,setGameActive] = React.useState(true)
     const [correctAnswers,setCorrectAnswers] = React.useState([])
+    const [chosenAnswers,setChosenAnswers] = React.useState([])
+    function addAnswers(questionId,answer){
+        //Use question ID to check if answer has already been given, then replace it
+        // Add using setChosenAnswer but use questions array to compare
+        //Need another function after to handle the submission
+        setChosenAnswers(prev=>[...prev,answer])
+    }
+    function checkAnswers(){
+        console.log(chosenAnswers)
+    }
     async function fetchQuestions() {
     try {
       const response = await fetch(
@@ -34,7 +44,7 @@ export default function Quiz() {
     setCorrectAnswers(prev=>[...prev,question.correctAnswer])
     const answersEl = question.answers.map((answer)=>{
         const answerFormatted = decode(answer)
-        return (<><input className='answer' value={answerFormatted} type="radio" name={questionFormatted} id={answerFormatted}/><label htmlFor={answerFormatted}>{answerFormatted}</label></>)
+        return (<><input className='answer' onClick={()=>addAnswers(question.id,answerFormatted)} value={answerFormatted} type="radio" name={questionFormatted} id={answerFormatted}/><label htmlFor={answerFormatted}>{answerFormatted}</label></>)
     })
     return <>
     <div>
@@ -44,9 +54,8 @@ export default function Quiz() {
     </div>
     </>
   })
-  console.log(correctAnswers)
   return (<section className="question-container">
     {questionsEl}
-    <div className="check-container"><button className="check-btn">Check Answers</button></div>
+    <div className="check-container"><button onClick={checkAnswers} className="check-btn">Check Answers</button></div>
     </section>);
 }
