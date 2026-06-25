@@ -71,3 +71,21 @@ button.answer-btn:hover,button.selected {
     align-items: center;
     justify-content: center;
 }
+input[type='radio']{ display:none; }
+label {
+    font-size: 12px;
+    padding: 4px 15px;
+    border-radius: 5px;
+    border: 2px solid #4D5B9E;
+    background-color: white;
+    color: #293264;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Clicking a label will select its corresponding hidden radio button
+   We can select that radio buttons sibling label and style it. */
+input[type='radio']:checked + label { 
+    background-color: #D6DBF5;
+    border: none;
+}

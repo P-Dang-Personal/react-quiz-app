@@ -1,21 +1,13 @@
 import { questions } from "./questions";
-export function shuffleArray(arrParam){
-    let arr = arrParam.slice(),
-        length = arr.length,
-        temp,
-        i;
-
-    while(length){
-        i = Math.floor(Math.random() * length--);
-
-        temp = arr[length];
-        arr[length] = arr[i];
-        arr[i] = temp;
+    export function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
     }
 
-    return arr;
-}
+  export async function getQuestions(){
+    return questions
 
-export function getQuestions(){
-    
-}
+  }
