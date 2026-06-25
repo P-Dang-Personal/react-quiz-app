@@ -10,7 +10,16 @@ export default function Quiz() {
         //Use question ID to check if answer has already been given, then replace it
         // Add using setChosenAnswer but use questions array to compare
         //Need another function after to handle the submission
-        setChosenAnswers(prev=>[...prev,answer])
+        // Check if answer is 
+        
+        if(!chosenAnswers.includes(answer)){
+                  setChosenAnswers(prev=>{
+            return [...prev,answer]
+        })
+        }
+        else if(false){
+
+      }
     }
     function checkAnswers(){
         console.log(chosenAnswers)
@@ -41,11 +50,12 @@ export default function Quiz() {
   React.useEffect(function(){fetchQuestions()},[questions])
   const questionsEl = questions.map((question)=>{
     const questionFormatted = decode(question.question)
-    setCorrectAnswers(prev=>[...prev,question.correctAnswer])
+    setCorrectAnswers(prev=>[...prev,{questionID:question.id,correctAnswer:decode(question.correctAnswer)}])
     const answersEl = question.answers.map((answer)=>{
         const answerFormatted = decode(answer)
         return (<><input className='answer' onClick={()=>addAnswers(question.id,answerFormatted)} value={answerFormatted} type="radio" name={questionFormatted} id={answerFormatted}/><label htmlFor={answerFormatted}>{answerFormatted}</label></>)
     })
+    console.log(chosenAnswers)
     return <>
     <div>
     <h2 className=''>{questionFormatted}</h2>
